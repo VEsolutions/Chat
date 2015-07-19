@@ -3,6 +3,7 @@ var express                 = require('express'),
     http                    = require('http').Server(app),
     io                      = require('socket.io')(http);
 
+app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
 
 app.get('/', function(req, res){
