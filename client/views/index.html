@@ -4,10 +4,12 @@
 		<title>VE chat</title>
 		<link rel="stylesheet" type="text/css" href="/css/index.css">
 		<script src="/js/cookieHandler.js"></script>
+		<script src="/js/notification.js"></script>
 	</head>
 	<body onload="checkCookie()">
 
 		<ul id="messages"></ul>
+		<div id="sound"></div>
 		<form action="">
 			<input id="m" autocomplete="off" /><button>Send</button>
 		</form>
@@ -21,7 +23,9 @@
 			    return false;
 			});
 			socket.on('chat message', function(msg){
+				 // @param filename The name of the file WITHOUT ending
 				$('#messages').append($('<li>').text(msg));
+				playSound('notification');
 			});
 		</script>
 	</body>	

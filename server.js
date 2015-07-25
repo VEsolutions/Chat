@@ -7,6 +7,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.use('/css', express.static(__dirname + '/client/css'));
 app.use('/js', express.static(__dirname + '/client/js'));
+app.use('/assets', express.static(__dirname + '/client/assets'));
 
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/client/views/index.html');
