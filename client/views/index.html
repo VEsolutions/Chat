@@ -4,7 +4,7 @@
 		<title>VE chat</title>
 		<link rel="stylesheet" type="text/css" href="/css/index.css">
 		<script src="/js/cookieHandler.js"></script>
-		<script src="/js/notification.js"></script>
+		<script src="/js/sound.js"></script>
 	</head>
 	<body onload="checkCookie()">
 
@@ -22,10 +22,18 @@
 			    $('#m').val('');
 			    return false;
 			});
+			socket.on('announce', function(msg){
+				$('#messages').append($('<li>').text(msg));
+			});
 			socket.on('chat message', function(msg){
 				 // @param filename The name of the file WITHOUT ending
 				$('#messages').append($('<li>').text(msg));
 				playSound('notification');
+			});
+			socket.on('disconnect', function(){
+				socket.emit('announce', getCookie("username") + " disconnected" + $('#m').val());
+				$('#m').val('');
+				playSound('disconnect');
 			});
 		</script>
 	</body>	
