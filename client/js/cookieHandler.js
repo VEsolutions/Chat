@@ -14,7 +14,7 @@ function getCookie(cookieName) {
             }
 
 function logIn(user) {
-    socket.emit('chat message', user + "connected");
+    socket.emit('chat message', user + " connected");
 }
 
 function setCookie(cookieName, cookieValue, numberOfDays) {
@@ -35,9 +35,9 @@ function checkCookie() {
     if (user != "") {
         logIn(user);
     }else {
-        user = prompt("Your username pls: ","");
+        user = prompt("Your username pls: ","ex. Ra's al Ghul");
         if (user != "" && user != null) {
-           setCookie("username", user, 30);
+           setCookie("username", user, 1);
         } else {
             user = "anonymous";
         }
